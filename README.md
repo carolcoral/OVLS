@@ -266,6 +266,8 @@ select * from dept limit 10,5;
 
 </li>
 </ol>
+
+
 <h2>用户服务模块</h2>
 <h3>功能接口设计</h3>
 <ol>
@@ -314,3 +316,54 @@ select * from dept limit 10,5;
 <p>对USER表进行更新。</p>
 </li>
 </ol>
+<h3>密码加密</h3>
+<p>密码使用MD5(密码+salt随机盐)算法处理。</p>
+<h3>Ajax跨域解决</h3>
+<p>有两种解决方案，一个是jsonp，另一个是CORS</p>
+<p>JSONP只能实现GET请求，而CORS支持所有类型的HTTP请求。这里不考虑JSONP。 HTML5带来了一个新的跨域解决方案CORS，CORS是一个W3C标准，全称是”跨域资源共享”（Cross-Origin Resource Sharing）</p>
+<p>定义一个Filter，对CORS参数设置</p>
+
+        @WebFilter(servletNames={"dispatcherServlet"})
+        public class AjaxDomainFilter implements Filter{
+        
+            public void init(FilterConfig filterConfig) throws ServletException {
+                // TODO Auto-generated method stub
+        
+            }
+        
+            public void doFilter(ServletRequest request, 
+                    ServletResponse response, FilterChain chain)
+                    throws IOException, ServletException {
+                HttpServletResponse httpResponse = (HttpServletResponse)response;
+                httpResponse.setHeader("Access-Control-Allow-Origin", "*");
+                httpResponse.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
+                chain.doFilter(request, response);
+            }
+        
+            public void destroy() {
+                // TODO Auto-generated method stub
+        
+            }
+        
+        }
+
+<p>注意：在启动类前添加@ServletComponentScan注解标记。</p>
+<h3>热启动</h3>
+<p>每次修改代码后，可以自动启动boot。</p>
+
+        <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+
+<h3>MySQL添加乱码</h3>
+<p>在指定mysql连接字符串时指定编码</p>
+
+        spring.datasource.url=jdbc:mysql://localhost:3306/studyonline?useUnicode=true&characterEncoding=utf8
+
+
+<h3>登录</h3>
+<p><img src="https://i.imgur.com/mK3J4HO.png" /></p>
+
+
+
