@@ -112,32 +112,32 @@ source D:\\studyonline.sql
 <ol>
 <li>
 <p>创建maven project，在pom.xml中追加定义</p>
-<pre><code>&lt;parent&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
-    &lt;version&gt;1.4.7.RELEASE&lt;/version&gt;
-&lt;/parent&gt;
+<pre><code><parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.4.7.RELEASE</version>
+</parent>
 
-&lt;dependencies&gt;
-    &lt;!-- web --&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
-    &lt;/dependency&gt;
+<dependencies>
+    <!-- web -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
 
-        &lt;!-- jsp --&gt;
-    &lt;dependency&gt;
-      &lt;groupId&gt;jstl&lt;/groupId&gt;
-      &lt;artifactId&gt;jstl&lt;/artifactId&gt;
-      &lt;version&gt;1.2&lt;/version&gt;
-    &lt;/dependency&gt;
+        <!-- jsp -->
+    <dependency>
+      <groupId>jstl</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
 
-    &lt;dependency&gt;
-      &lt;groupId&gt;org.apache.tomcat.embed&lt;/groupId&gt;
-      &lt;artifactId&gt;tomcat-embed-jasper&lt;/artifactId&gt;
-    &lt;/dependency&gt;
+    <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-jasper</artifactId>
+    </dependency>
 
-&lt;/dependencies&gt;
+</dependencies>
 </code></pre>
 
 </li>
@@ -167,18 +167,18 @@ public class StudyBootApplication {
 </li>
 <li>
 <p>映射html请求，显示jsp页面</p>
-<p>/study/<em>.html--&gt;DispatcherServlet--&gt;StudyController--&gt;ViewResolver--&gt;webapp/study/</em>.jsp</p>
+<p>/study/<em>.html-->DispatcherServlet-->StudyController-->ViewResolver-->webapp/study/</em>.jsp</p>
 <pre><code>@Controller
 public class StudyController {
 
-    @RequestMapping(&quot;/study/index.html&quot;)
+    @RequestMapping("/study/index.html")
     public String toIndex(){
-        return &quot;index&quot;;//viewresolver--&gt;index.jsp
+        return "index";//viewresolver-->index.jsp
     }
 
-    @RequestMapping(&quot;/study/course.html&quot;)
+    @RequestMapping("/study/course.html")
     public String toCourse(){
-        return &quot;course&quot;;
+        return "course";
     }
 
 }
@@ -190,31 +190,31 @@ public class StudyController {
 <ol>
 <li>
 <p>创建maven project,在pom.xml添加定义</p>
-<pre><code>&lt;parent&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
-    &lt;version&gt;1.4.7.RELEASE&lt;/version&gt;
-&lt;/parent&gt;
+<pre><code><parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.4.7.RELEASE</version>
+</parent>
 
-&lt;dependencies&gt;
-    &lt;!-- web --&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
-    &lt;/dependency&gt;
+<dependencies>
+    <!-- web -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
 
-    &lt;!-- thymeleaf --&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-        &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;
-    &lt;/dependency&gt;
-    &lt;!-- 取消严格thymeleaf模板校验 --&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;net.sourceforge.nekohtml&lt;/groupId&gt;
-        &lt;artifactId&gt;nekohtml&lt;/artifactId&gt;
-    &lt;/dependency&gt;
+    <!-- thymeleaf -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    <!-- 取消严格thymeleaf模板校验 -->
+    <dependency>
+        <groupId>net.sourceforge.nekohtml</groupId>
+        <artifactId>nekohtml</artifactId>
+    </dependency>
 
-&lt;/dependencies&gt;
+</dependencies>
 </code></pre>
 
 </li>
@@ -248,13 +248,13 @@ public class ExamBootApplication {
 </li>
 <li>
 <p>映射html请求，显示thymeleaf模板页面</p>
-<p>/exam/<em>.html--&gt;DispatcherServlet--&gt;ExamController--&gt;thymeleaf(</em>.html界面)</p>
+<p>/exam/<em>.html-->DispatcherServlet-->ExamController-->thymeleaf(</em>.html界面)</p>
 <pre><code>@Controller
 public class ExamController {
 
-    @RequestMapping(&quot;/exam/home.html&quot;)
+    @RequestMapping("/exam/home.html")
     public String toHome(){
-        return &quot;home&quot;;
+        return "home";
     }
 
 }
@@ -262,7 +262,6 @@ public class ExamController {
 
 </li>
 </ol>
-
 <h2>用户服务模块</h2>
 <h3>功能接口设计</h3>
 <ol>
@@ -279,13 +278,13 @@ public class ExamController {
 <p>请求参数：用户名、密码</p>
 </li>
 <li>
-<p>响应结果：{&quot;status&quot;:1,&quot;msg&quot;:&quot;注册成功&quot;}</p>
+<p>响应结果：{"status":1,"msg":"注册成功"}</p>
 </li>
 <li>
 <p>详细设计：</p>
 </li>
 </ul>
-<p>/user/regist--&gt;UserController.regist--&gt;UserService.addUser--&gt;UserMapper--&gt;返回JSON结果</p>
+<p>/user/regist-->UserController.regist-->UserService.addUser-->UserMapper-->返回JSON结果</p>
 </li>
 <li>
 <p>登录</p>
@@ -293,10 +292,10 @@ public class ExamController {
 <li>表操作：对USER表进行查询。</li>
 <li>请求地址：/user/login  POST</li>
 <li>请求参数：用户名、密码</li>
-<li>响应结果：{&quot;status&quot;:1,&quot;msg&quot;:&quot;登录成功&quot;}</li>
+<li>响应结果：{"status":1,"msg":"登录成功"}</li>
 <li>详细设计：</li>
 </ul>
-<p>/user/login--&gt;UserController.login--&gt;UserService.checkUser--&gt;UserMapper--&gt;返回JSON结果</p>
+<p>/user/login-->UserController.login-->UserService.checkUser-->UserMapper-->返回JSON结果</p>
 </li>
 <li>
 <p>查看个人信息</p>
@@ -311,5 +310,7 @@ public class ExamController {
 <p>对USER表进行更新。</p>
 </li>
 </ol>
+
+
 
 
