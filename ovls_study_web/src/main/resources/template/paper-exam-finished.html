@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<base href="<%=basePath%>">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>兄弟连java在线考试系统</title>
+		
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="keywords" content="">
+		<link rel="shortcut icon" href="resources/images/favicon.ico" />
+		<link href="resources/bootstrap/css/bootstrap-huan.css" rel="stylesheet">
+		<link href="resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+		<link href="resources/css/style.css" rel="stylesheet">
+		
+		<link href="resources/css/exam.css" rel="stylesheet">
+		<link href="resources/chart/morris.css" rel="stylesheet">
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-5">
+						<div class="logo">
+							<h1><a href="home.html"><img alt="" src="resources/images/logo.png"></a></h1>
+						</div>
+					</div>
+					<div class="col-xs-7" id="login-info">
+
+					 
+							<div id="login-info-user">
+								
+								<a href="usercenter.html" id="system-info-account" target="_blank">张三</a>
+								<span>|</span>
+								<a href="home.html"><i class="fa fa-sign-out"></i> 退出</a>
+							</div>
+						 
+
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- Navigation bar starts -->
+
+		<div class="navbar bs-docs-nav" role="banner">
+			<div class="container">
+				<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="home.html"><i class="fa fa-home"></i>主页</a>
+						</li>
+					
+						<li>
+							<a href="usercenter.html"><i class="fa fa-dashboard"></i>会员中心</a>
+						</li>
+						
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+		<!-- Navigation bar ends -->
+
+		<!-- Slider starts -->
+
+		<div>
+			<!-- Slider (Flex Slider) -->
+
+			<div class="container" style="min-height:500px;">
+
+				<div class="row">
+					<div class="col-xs-3">
+						<ul class="nav default-sidenav">
+							<li class="active">
+								<a href="paper-exam-finished.html"> <i class="fa fa-bar-chart-o"></i> 分析报告 </a>
+
+							</li>
+							<li>
+								<a href="paper-exam-finish-report.html"> <i class="fa fa-file-text"></i> 详细解答 </a>
+							</li>
+						</ul>
+
+					</div>
+					<div class="col-xs-9">
+						<div class="page-header">
+							<h1><i class="fa fa-bar-chart-o"></i> 分析报告 </h1>
+						</div>
+						<div class="page-content row">
+
+							<div id="graph-base" class="col-xs-8" style="height:200px;width: 200px;">
+
+							</div>
+							<div  class="col-xs-7" style="margin-top: 24px;">
+								
+								<div class="form-line add-role">
+									<span class="form-label">考试名称：</span>
+									<span> 练习考试 </span>
+								</div>
+								<div class="form-line add-role">
+									<span class="form-label">交卷时间：</span>
+									<span >
+										<fmt:formatDate value="${create_time }" type="time" timeStyle="full" pattern="yyyy-MM-dd HH:mm"/>
+									</span>
+								</div>
+								<div class="form-line add-role">
+									<span class="form-label">总题目：</span>
+									<span class="label label-info"> ${total } </span>
+								</div>
+								<div class="form-line exam-report-correct">
+									<span class="form-label">正确题目：</span>
+									<span class="label label-success"> ${right } </span>
+								</div>
+								<div class="form-line exam-report-error">
+									<span class="form-label">错误题目：</span>
+									<span class="label label-danger"> ${wrong } </span>
+								</div>
+
+							</div>
+
+						</div>
+						<div class="page-content row">
+							<table class="table table-bordered" style="margin-top: 25px;">
+								<thead>
+									<tr>
+										<th>考点</th>
+										<th>答题情况</th>
+										<th>正确率</th>
+									</tr>
+								</thead>
+								<tbody>
+									
+									<tr>
+										<td>${result.key }</td>
+										<td>${result.value.rightTimes } / ${result.value.sum }</td>
+										<td>
+											<fmt:formatNumber value="${result.value.rightTimes/result.value.sum }" type="number" pattern="0.00%"/>
+										</td>
+									</tr>
+									<tr>
+										<td>${result.key }</td>
+										<td>${result.value.rightTimes } / ${result.value.sum }</td>
+										<td>
+											<fmt:formatNumber value="${result.value.rightTimes/result.value.sum }" type="number" pattern="0.00%"/>
+										</td>
+									</tr>
+									
+								</tbody>
+							</table>
+						</div>
+						<div class="page-content row">
+							<div id="question-navi" style="margin: 24px 0;width: 100%;">
+
+								<div id="question-navi-content" style="padding: 15px 12px;">
+									<a class="question-navi-item">1</a>
+									<a class="question-navi-item">2</a>
+									<a class="questionavi-item navi-item-error">3</a>
+									<a class="question-navi-item">4</a>
+									<a class="question-navi-item">5</a>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Slider Ends -->
+
+		<!-- Javascript files -->
+		<!-- jQuery -->
+		<script type="text/javascript" src="resources/js/jquery/jquery-1.9.0.min.js"></script>
+		<!-- Bootstrap JS -->
+		<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="resources/chart/raphael-min.js"></script>
+		<script type="text/javascript" src="resources/chart/morris.js"></script>
+		
+	</body>
+</html>
