@@ -105,3 +105,211 @@ set names utf8;
 source D:\\studyonline.sql
 </code></pre>
 
+<h2>数据库结构</h2>
+<p><img src="https://i.imgur.com/9ZFvufq.png" /></p>
+<p><img src="https://i.imgur.com/luxszGa.png" /></p>
+<h2>在线学习Web工程搭建</h2>
+<ol>
+<li>
+<p>创建maven project，在pom.xml中追加定义</p>
+<pre><code>&lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;version&gt;1.4.7.RELEASE&lt;/version&gt;
+&lt;/parent&gt;
+
+&lt;dependencies&gt;
+    &lt;!-- web --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+        &lt;!-- jsp --&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;jstl&lt;/groupId&gt;
+      &lt;artifactId&gt;jstl&lt;/artifactId&gt;
+      &lt;version&gt;1.2&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.apache.tomcat.embed&lt;/groupId&gt;
+      &lt;artifactId&gt;tomcat-embed-jasper&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+&lt;/dependencies&gt;
+</code></pre>
+
+</li>
+<li>
+<p>添加application.properties,追加定义</p>
+<pre><code>server.port=9001
+spring.mvc.view.prefix=/study/
+spring.mvc.view.suffix=.jsp
+</code></pre>
+
+</li>
+<li>
+<p>添加启动类</p>
+<pre><code>@SpringBootApplication
+public class StudyBootApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(StudyBootApplication.class, args);
+    }
+
+}
+</code></pre>
+
+</li>
+<li>
+<p>在src/main下创建webapp目录，将study界面复制进去。</p>
+</li>
+<li>
+<p>映射html请求，显示jsp页面</p>
+<p>/study/<em>.html--&gt;DispatcherServlet--&gt;StudyController--&gt;ViewResolver--&gt;webapp/study/</em>.jsp</p>
+<pre><code>@Controller
+public class StudyController {
+
+    @RequestMapping(&quot;/study/index.html&quot;)
+    public String toIndex(){
+        return &quot;index&quot;;//viewresolver--&gt;index.jsp
+    }
+
+    @RequestMapping(&quot;/study/course.html&quot;)
+    public String toCourse(){
+        return &quot;course&quot;;
+    }
+
+}
+</code></pre>
+
+</li>
+</ol>
+<h2>在线考试Web工程搭建</h2>
+<ol>
+<li>
+<p>创建maven project,在pom.xml添加定义</p>
+<pre><code>&lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;version&gt;1.4.7.RELEASE&lt;/version&gt;
+&lt;/parent&gt;
+
+&lt;dependencies&gt;
+    &lt;!-- web --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- thymeleaf --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;!-- 取消严格thymeleaf模板校验 --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;net.sourceforge.nekohtml&lt;/groupId&gt;
+        &lt;artifactId&gt;nekohtml&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+
+&lt;/dependencies&gt;
+</code></pre>
+
+</li>
+<li>
+<p>在application.properties添加参数定义</p>
+<pre><code>server.port=9002
+#nekohtml
+spring.thymeleaf.mode=LEGACYHTML5
+</code></pre>
+
+</li>
+<li>
+<p>编写主启动类</p>
+<pre><code>@SpringBootApplication
+public class ExamBootApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(ExamBootApplication.class, args);
+    }
+
+}
+</code></pre>
+
+</li>
+<li>
+<p>将html模板文件放入src\main\resources\templates目录中</p>
+<ul>
+<li>创建templates目录，将html放入</li>
+<li>创建static或public，将resources文件静态资源放入</li>
+</ul>
+</li>
+<li>
+<p>映射html请求，显示thymeleaf模板页面</p>
+<p>/exam/<em>.html--&gt;DispatcherServlet--&gt;ExamController--&gt;thymeleaf(</em>.html界面)</p>
+<pre><code>@Controller
+public class ExamController {
+
+    @RequestMapping(&quot;/exam/home.html&quot;)
+    public String toHome(){
+        return &quot;home&quot;;
+    }
+
+}
+</code></pre>
+
+</li>
+</ol>
+
+<h2>用户服务模块</h2>
+<h3>功能接口设计</h3>
+<ol>
+<li>
+<p>注册</p>
+<ul>
+<li>
+<p>表操作：对USER表进行插入。</p>
+</li>
+<li>
+<p>请求地址：/user/regist  POST</p>
+</li>
+<li>
+<p>请求参数：用户名、密码</p>
+</li>
+<li>
+<p>响应结果：{&quot;status&quot;:1,&quot;msg&quot;:&quot;注册成功&quot;}</p>
+</li>
+<li>
+<p>详细设计：</p>
+</li>
+</ul>
+<p>/user/regist--&gt;UserController.regist--&gt;UserService.addUser--&gt;UserMapper--&gt;返回JSON结果</p>
+</li>
+<li>
+<p>登录</p>
+<ul>
+<li>表操作：对USER表进行查询。</li>
+<li>请求地址：/user/login  POST</li>
+<li>请求参数：用户名、密码</li>
+<li>响应结果：{&quot;status&quot;:1,&quot;msg&quot;:&quot;登录成功&quot;}</li>
+<li>详细设计：</li>
+</ul>
+<p>/user/login--&gt;UserController.login--&gt;UserService.checkUser--&gt;UserMapper--&gt;返回JSON结果</p>
+</li>
+<li>
+<p>查看个人信息</p>
+<p>对USER表进行查询。</p>
+</li>
+<li>
+<p>修改个人信息</p>
+<p>对USER表进行更新。</p>
+</li>
+<li>
+<p>修改密码</p>
+<p>对USER表进行更新。</p>
+</li>
+</ol>
+
+
