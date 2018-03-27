@@ -99,11 +99,12 @@ select * from dept limit 10,5;
 </li>
 </ol>
 <h2>数据库导入</h2>
-<pre><code>create database studyonline;
-use studyonline;
-set names utf8;
-source D:\\studyonline.sql
-</code></pre>
+
+        create database studyonline;
+        use studyonline;
+        set names utf8;
+        source D:\\studyonline.sql
+
 
 <h2>数据库结构</h2>
 <p><img src="https://i.imgur.com/9ZFvufq.png" /></p>
@@ -112,54 +113,55 @@ source D:\\studyonline.sql
 <ol>
 <li>
 <p>创建maven project，在pom.xml中追加定义</p>
-<pre><code><parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.4.7.RELEASE</version>
-</parent>
 
-<dependencies>
-    <!-- web -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
+        <parent>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-parent</artifactId>
+            <version>1.4.7.RELEASE</version>
+        </parent>
+        
+        <dependencies>
+            <!-- web -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+            </dependency>
+        
+                <!-- jsp -->
+            <dependency>
+              <groupId>jstl</groupId>
+              <artifactId>jstl</artifactId>
+              <version>1.2</version>
+            </dependency>
+        
+            <dependency>
+              <groupId>org.apache.tomcat.embed</groupId>
+              <artifactId>tomcat-embed-jasper</artifactId>
+            </dependency>
+        
+        </dependencies>
 
-        <!-- jsp -->
-    <dependency>
-      <groupId>jstl</groupId>
-      <artifactId>jstl</artifactId>
-      <version>1.2</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.tomcat.embed</groupId>
-      <artifactId>tomcat-embed-jasper</artifactId>
-    </dependency>
-
-</dependencies>
-</code></pre>
 
 </li>
 <li>
 <p>添加application.properties,追加定义</p>
-<pre><code>server.port=9001
-spring.mvc.view.prefix=/study/
-spring.mvc.view.suffix=.jsp
-</code></pre>
+
+        server.port=9001
+        spring.mvc.view.prefix=/study/
+        spring.mvc.view.suffix=.jsp
 
 </li>
 <li>
 <p>添加启动类</p>
-<pre><code>@SpringBootApplication
-public class StudyBootApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(StudyBootApplication.class, args);
-    }
-
-}
-</code></pre>
+        @SpringBootApplication
+        public class StudyBootApplication {
+        
+            public static void main(String[] args) {
+                SpringApplication.run(StudyBootApplication.class, args);
+            }
+        
+        }
 
 </li>
 <li>
@@ -168,21 +170,21 @@ public class StudyBootApplication {
 <li>
 <p>映射html请求，显示jsp页面</p>
 <p>/study/<em>.html-->DispatcherServlet-->StudyController-->ViewResolver-->webapp/study/</em>.jsp</p>
-<pre><code>@Controller
-public class StudyController {
 
-    @RequestMapping("/study/index.html")
-    public String toIndex(){
-        return "index";//viewresolver-->index.jsp
-    }
-
-    @RequestMapping("/study/course.html")
-    public String toCourse(){
-        return "course";
-    }
-
-}
-</code></pre>
+        @Controller
+        public class StudyController {
+        
+            @RequestMapping("/study/index.html")
+            public String toIndex(){
+                return "index";//viewresolver-->index.jsp
+            }
+        
+            @RequestMapping("/study/course.html")
+            public String toCourse(){
+                return "course";
+            }
+        
+        }
 
 </li>
 </ol>
@@ -190,53 +192,54 @@ public class StudyController {
 <ol>
 <li>
 <p>创建maven project,在pom.xml添加定义</p>
-<pre><code><parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.4.7.RELEASE</version>
-</parent>
 
-<dependencies>
-    <!-- web -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-
-    <!-- thymeleaf -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-thymeleaf</artifactId>
-    </dependency>
-    <!-- 取消严格thymeleaf模板校验 -->
-    <dependency>
-        <groupId>net.sourceforge.nekohtml</groupId>
-        <artifactId>nekohtml</artifactId>
-    </dependency>
-
-</dependencies>
-</code></pre>
+        <parent>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-parent</artifactId>
+            <version>1.4.7.RELEASE</version>
+        </parent>
+        
+        <dependencies>
+            <!-- web -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+            </dependency>
+        
+            <!-- thymeleaf -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            </dependency>
+            <!-- 取消严格thymeleaf模板校验 -->
+            <dependency>
+                <groupId>net.sourceforge.nekohtml</groupId>
+                <artifactId>nekohtml</artifactId>
+            </dependency>
+        
+        </dependencies>
 
 </li>
 <li>
 <p>在application.properties添加参数定义</p>
-<pre><code>server.port=9002
-#nekohtml
-spring.thymeleaf.mode=LEGACYHTML5
-</code></pre>
+
+        server.port=9002
+        #nekohtml
+        spring.thymeleaf.mode=LEGACYHTML5
+
 
 </li>
 <li>
 <p>编写主启动类</p>
-<pre><code>@SpringBootApplication
-public class ExamBootApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ExamBootApplication.class, args);
-    }
-
-}
-</code></pre>
+        @SpringBootApplication
+        public class ExamBootApplication {
+        
+            public static void main(String[] args) {
+                SpringApplication.run(ExamBootApplication.class, args);
+            }
+        
+        }
 
 </li>
 <li>
@@ -249,16 +252,17 @@ public class ExamBootApplication {
 <li>
 <p>映射html请求，显示thymeleaf模板页面</p>
 <p>/exam/<em>.html-->DispatcherServlet-->ExamController-->thymeleaf(</em>.html界面)</p>
-<pre><code>@Controller
-public class ExamController {
 
-    @RequestMapping("/exam/home.html")
-    public String toHome(){
-        return "home";
-    }
+        @Controller
+        public class ExamController {
+        
+            @RequestMapping("/exam/home.html")
+            public String toHome(){
+                return "home";
+            }
+        
+        }
 
-}
-</code></pre>
 
 </li>
 </ol>
@@ -310,7 +314,3 @@ public class ExamController {
 <p>对USER表进行更新。</p>
 </li>
 </ol>
-
-
-
-
