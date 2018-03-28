@@ -364,6 +364,68 @@ select * from dept limit 10,5;
 
 <h3>登录</h3>
 <p><img src="https://i.imgur.com/mK3J4HO.png" /></p>
+<h2>登录涉及技术</h2>
+<ol>
+<li>密码MD5+盐加密技术</li>
+<li>SSO单点登录技术</li>
+<li>采用token令牌机制</li>
+<li>采用服务器端redis存储和客户端h5本地存储</li>
+<li>采用UUID算法</li>
+</ol>
+<h2>课程服务工程搭建</h2>
+<ol>
+<li>
+<p>创建maven project,在pom.xml添加引入</p>
+
+		<dependencies>
+		    <dependency>
+		        <groupId>cn.xdl</groupId>
+		        <artifactId>ovls_common_service</artifactId>
+		        <version>0.0.1-SNAPSHOT</version>
+		    </dependency>
+		</dependencies>
+
+</li>
+<li>
+<p>添加application.properties文件</p>
+
+server.port=8002
+
+		#datasource
+		spring.datasource.username=root
+		spring.datasource.password=1234
+		spring.datasource.url=jdbc:mysql://localhost:3306/studyonline?useUnicode=true&characterEncoding=utf8
+		spring.datasource.driverClassName=com.mysql.jdbc.Driver
+
+
+
+</li>
+<li>
+<p>添加主启动类定义</p>
+
+		@SpringBootApplication
+		@MapperScan(basePackages={"cn.xdl.ovls.course.dao"})
+		@ServletComponentScan
+		public class CourseBootApplication {
+
+		    public static void main(String[] args) {
+		        SpringApplication.run(CourseBootApplication.class, args);
+		    }
+
+		}
+
+
+</li>
+<li>
+<p>添加entity和Mapper映射器</p>
+</li>
+</ol>
+<h2>设计和实现免费好课推荐功能</h2>
+<p>/course/free-->DispatcherServlet-->CourseController-->CourseService-->CourseMapper-->返回JSON结果</p>
+<p>{"status":1,"msg":"查询成功","data":课程集合}</p>
+<p>查询免费好课，条件是免费、好课（评价）、前5个</p>
+
+
 
 
 
