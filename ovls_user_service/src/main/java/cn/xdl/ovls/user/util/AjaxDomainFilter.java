@@ -12,7 +12,6 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletResponse;
 
 
-//
 @WebFilter(servletNames={"dispatcherServlet"})
 public class AjaxDomainFilter implements Filter{
 

@@ -28,7 +28,7 @@ public class TestUserDao {
 	public void test2(){
 		User user = userDao.selectByPrimaryKey(10);
 		if(user==null){
-			System.out.println("δ�ҵ���¼");
+			System.out.println("未找到记录");
 		}
 	}
 	

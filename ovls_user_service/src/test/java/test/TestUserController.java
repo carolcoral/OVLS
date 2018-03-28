@@ -33,4 +33,16 @@ public class TestUserController {
 		System.out.println(content);
 	}
 	
+	@Test
+	public void test2() throws Exception{
+		MockMvc mock = 
+			MockMvcBuilders.standaloneSetup(userController).build();
+		RequestBuilder request = MockMvcRequestBuilders.post("/user/login")
+			.param("name", "java161")
+			.param("password", "12345");
+		MvcResult result = mock.perform(request).andReturn();
+		String content = result.getResponse().getContentAsString();
+		System.out.println(content);
+	}
+	
 }

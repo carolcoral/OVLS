@@ -175,6 +175,16 @@
 <script type="text/javascript" src="layer/layer.js"></script>
 
 <script type="text/javascript">
+
+$(function(){
+	var userId = sessionStorage.userId;
+	var token = sessionStorage.token;
+	if(userId!=null&&token!=null){
+		$("#log_reg").hide();
+		//TODO 可以利用ajax加载个人信息显示
+	}
+});
+
 /*
  *注册弹出层事件函数 
  

@@ -84,7 +84,7 @@ div.panel-body {
 					
 				</div>
 				<div class="hd clearfix">
-					<h2 class="l">Java</h2>
+					<h2 class="l" id="course_name"></h2>
 				</div>
 
 				<div class="statics clearfix"><h1>
@@ -93,18 +93,20 @@ div.panel-body {
 					</div>
 					<div class="static-item l">
 						<span class="meta">学习人数</span> <span
-							class="meta-value js-learn-num">1032</span>
+							class="meta-value js-learn-num" id="course_learnCount"></span>
 					</div>
 					<div class="static-item l">
-						<span class="meta">难度级别</span> <span class="meta-value">3</span>
+						<span class="meta">难度级别</span> 
+						<span class="meta-value" id="course_difficulty"></span>
 						<em></em>
 					</div>
 					<div class="static-item l">
-						<span class="meta">课程时长</span> <span class="meta-value">
-							1小时35分</span> <em></em>
+						<span class="meta">课程时长</span> 
+						<span class="meta-value" id="course_learnTime"></span> <em></em>
 					</div>
 					<div class="static-item l score-btn">
-						<span class="meta">综合评分</span> <span class="meta-value">5</span>
+						<span class="meta">综合评分</span> 
+						<span class="meta-value" id="course_score"></span>
 						<em></em>
 					</div>
 					<div class="static-item l">
@@ -134,8 +136,7 @@ div.panel-body {
 				<div class="content">
 					<!-- 课程简介 -->
 					<div class="course-brief">
-						<p class="auto-wrap">
-							简介：JAVAJAVAJAVAJAVAJAVAJAVA</p>
+						<p class="auto-wrap" id="course_intro"></p>
 					</div>
 					<!-- 课程简介 end -->
 					<div class="mod-tab-menu ">
@@ -441,6 +442,40 @@ document.write(mystr+&quot;&lt;br&gt;&quot;);//输出hello后，输出一个换�
 	<!-- 插入底部代码 -->
 
 	<%@include file="footer_black.jsp"%>
-
 </body>
+
+<script type="text/javascript">
+var id = '${param.id}';
+$(function(){
+	//查询课程详情
+	loadCourse(id);
+	//查看课程章节和视频
+	loadChapterVideos(id);
+});
+
+function loadChapterVideos(id){
+	//TODO
+};
+
+function loadCourse(id){
+	$.ajax({
+		url:"http://localhost:8002/course/"+id,
+		type:"get",
+		dataType:"json",
+		success:function(result){
+			if(result.status==1){
+				var course = result.data;
+				//将课程信息显示到页面
+				$("#course_name").html(course.name);
+				$("#course_learnCount").html(course.learnCount);
+				$("#course_difficulty").html(course.difficulty);
+				$("#course_score").html(course.score);
+				$("#course_learnTime").html(course.learnTime);
+				$("#course_intro").html(course.intro);
+			}
+		}
+	});
+};
+</script>
+
 </html>

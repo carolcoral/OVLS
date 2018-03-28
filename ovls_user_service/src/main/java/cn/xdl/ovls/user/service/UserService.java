@@ -1,19 +1,21 @@
 package cn.xdl.ovls.user.service;
 
+import java.util.Map;
+
 public interface UserService {
 	/**
 	 * 用户注册
-	 * @param name 用户名
+	 * @param name 账号
 	 * @param password 密码
-	 * @return 1：成功 2：账号已存在
+	 * @return 1:表示成功;2:表示账号已存在
 	 */
 	public int addUser(String name,String password);
 	
 	/**
-	 * 用户登录
-	 * @param name 用户名
+	 * 登录登录
+	 * @param name 账号
 	 * @param password 密码
-	 * @return 1：登录成功 2：登录失败 3：密码错误
+	 * @return 1:登录成功,token;2:账号不存在;3:密码错误
 	 */
-	public int checkUser(String name,String password);
+	public Map<String, Object> checkUser(String name,String password);
 }

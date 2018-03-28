@@ -29,7 +29,8 @@
                 <li>
                     <label for="user"  class="input-tips2">用户名：</label>
                     <div class="inputOuter2">
-                        <input type="text" id="user"  name="username" value="${username }" maxlength="16" class="inputstyle2"/>
+                        <input type="text" id="username"  name="username" maxlength="16" class="inputstyle2"/>
+                    	 <span id="register_error1" style="color: red"></span>
                     </div>
                     
                 </li>
@@ -37,18 +38,17 @@
                 <li>
                 <label for="passwd" class="input-tips2">密码：</label>
                     <div class="inputOuter2">
-                        <input type="password" id="passwd"  name="password" value="${password }" maxlength="16" class="inputstyle2"/>
-                        
+                        <input type="password" id="password"  name="password" maxlength="16" class="inputstyle2"/>
+                        <span id="register_error2" style="color: red"></span>
                     </div>
                     
                 </li>
                 <li>
                 <label for="passwd2" class="input-tips2">确认密码：</label>
                     <div class="inputOuter2">
-                        <input type="password" id="passwd2" name="password2" value="${password2 }" maxlength="16" class="inputstyle2" />
-                        <span id="register_error1" style="color: red"></span>
-                        <span id="register_error2" style="color: red"></span>
-                        <span id="register_error3" style="color: green"></span>
+                        <input type="password" id="password2" name="password2" maxlength="16" class="inputstyle2" />
+                        <span id="register_error3" style="color: red"></span>
+                        <span id="register_error4" style="color: green"></span>
                     </div>
                     
                 </li>
@@ -75,6 +75,59 @@
     </div>
     <!--注册end-->
 </div>
-
 </body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+	function register(){
+		//清空原有提示信息
+		$("#register_error1").html("");
+		$("#register_error2").html("");
+		$("#register_error3").html("");
+		$("#register_error4").html("");
+		//获取请求参数
+		var username  = $("#username").val();
+		var password = $("#password").val();
+		var password2 = $("#password2").val();
+		//参数格式检查
+		var ok = true;//表单通过检测
+		//检测账号
+		if(username==""){
+			$("#register_error1").html("账号不能为空");
+			ok = false;
+		}
+		//检测密码
+		if(password==""){
+			$("#register_error2").html("密码不能为空");
+			ok = false;
+		}
+		//检测确认密码
+		if(password2==""){
+			$("#register_error3").html("确认密码不能为空");
+			ok = false;
+		}else if(password2!=password){
+			$("#register_error3").html("两次密码不一致");
+			ok = false;
+		}
+		//发送ajax请求
+		if(ok){
+
+			$.ajax({
+				url:"http://localhost:8001/user/regist",
+				type:"post",
+				data:{"name":username,"password":password},
+				dataType:"json",
+				success:function(result){
+					if(result.status==1){
+						$("#register_error4").html(result.msg);
+					}else if(result.status==2){
+						$("#register_error1").html(result.msg);
+					}else{
+						$("#register_error3").html(result.msg);
+					}
+				}
+			});
+		
+		}
+	};
+</script>
 </html>

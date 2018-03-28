@@ -574,63 +574,10 @@
 					</div>
 				</div>
 					
-				<div class="width100 float_l" id="zymCoursePrice">
+				<div class="width100 float_l" id="freeCourse">
 				
-					<div class="width_220 height172 float_l margin_r20 border_shadow jingguoxianshi over_pos bianshou">
-						<div class="width100 float_l img_100 z_inx_1">
-							<img src="img/uiz7.jpg">
-						</div>
-						<div class="img_backg2 donghua">
-							<span class="margin_t15 float_l ">飞速上手的跨平台App开发</span> <span class="float_l fon_siz12 line_hei16 color_gray margin_t5 posi_relative ">8小时带领大家步步深入学习标签的基础知识，掌握各种样式的基本用法。</span>
-						</div>
-						<div class="width100 float_l padding_lr20 height48 fon_siz12 line_hei48 z_inx_3 posi_relative backg_white">
-							<span class="float_l color_red">￥88.00</span> <span class="float_r color_gray"><span>499</span>人在学</span>
-						</div>
-					</div>
-					<div class="width_220 height172 float_l margin_r20 border_shadow jingguoxianshi over_pos bianshou">
-						<div class="width100 float_l img_100 z_inx_1">
-							<img src="img/uiz7.jpg">
-						</div>
-						<div class="img_backg2 donghua">
-							<span class="margin_t15 float_l ">飞速上手的跨平台App开发</span> <span class="float_l fon_siz12 line_hei16 color_gray margin_t5 posi_relative ">8小时带领大家步步深入学习标签的基础知识，掌握各种样式的基本用法。</span>
-						</div>
-						<div class="width100 float_l padding_lr20 height48 fon_siz12 line_hei48 z_inx_3 posi_relative backg_white">
-							<span class="float_l color_red">￥88.00</span> <span class="float_r color_gray"><span>499</span>人在学</span>
-						</div>
-					</div>
-					<div class="width_220 height172 float_l margin_r20 border_shadow jingguoxianshi over_pos bianshou">
-						<div class="width100 float_l img_100 z_inx_1">
-							<img src="img/uiz7.jpg">
-						</div>
-						<div class="img_backg2 donghua">
-							<span class="margin_t15 float_l ">飞速上手的跨平台App开发</span> <span class="float_l fon_siz12 line_hei16 color_gray margin_t5 posi_relative ">8小时带领大家步步深入学习标签的基础知识，掌握各种样式的基本用法。</span>
-						</div>
-						<div class="width100 float_l padding_lr20 height48 fon_siz12 line_hei48 z_inx_3 posi_relative backg_white">
-							<span class="float_l color_red">￥88.00</span> <span class="float_r color_gray"><span>499</span>人在学</span>
-						</div>
-					</div>
-					<div class="width_220 height172 float_l margin_r20 border_shadow jingguoxianshi over_pos bianshou">
-						<div class="width100 float_l img_100 z_inx_1">
-							<img src="img/uiz7.jpg">
-						</div>
-						<div class="img_backg2 donghua">
-							<span class="margin_t15 float_l ">飞速上手的跨平台App开发</span> <span class="float_l fon_siz12 line_hei16 color_gray margin_t5 posi_relative ">8小时带领大家步步深入学习标签的基础知识，掌握各种样式的基本用法。</span>
-						</div>
-						<div class="width100 float_l padding_lr20 height48 fon_siz12 line_hei48 z_inx_3 posi_relative backg_white">
-							<span class="float_l color_red">￥88.00</span> <span class="float_r color_gray"><span>499</span>人在学</span>
-						</div>
-					</div>
-					<div class="width_220 height172 float_l margin_r20 border_shadow jingguoxianshi over_pos bianshou">
-						<div class="width100 float_l img_100 z_inx_1">
-							<img src="img/uiz7.jpg">
-						</div>
-						<div class="img_backg2 donghua">
-							<span class="margin_t15 float_l ">飞速上手的跨平台App开发</span> <span class="float_l fon_siz12 line_hei16 color_gray margin_t5 posi_relative ">8小时带领大家步步深入学习标签的基础知识，掌握各种样式的基本用法。</span>
-						</div>
-						<div class="width100 float_l padding_lr20 height48 fon_siz12 line_hei48 z_inx_3 posi_relative backg_white">
-							<span class="float_l color_red">￥88.00</span> <span class="float_r color_gray"><span>499</span>人在学</span>
-						</div>
-					</div>
+				<!-- 利用ajax加载免费好课 -->
+				
 				</div>
 			</div>
 		</div>
@@ -903,4 +850,58 @@
 
 	<%@include file="footer.jsp"%>
 	</body>
+	
+<script type="text/javascript">
+
+$(function(){
+	//加载免费好课信息
+	loadFreeCourse();
+	//TODO 加载课程推荐信息
+	//TODO 加载html课程信息
+});
+
+
+function loadFreeCourse(){
+	$.ajax({
+		url:"http://localhost:8002/course/free",
+		type:"get",
+		data:{"top":5},
+		dataType:"json",
+		success:function(result){
+			if(result.status==1){
+				var courses = result.data;
+				//循环课程集合,生成免费好课显示
+				for(var i=0;i<courses.length;i++){
+					var course_id = courses[i].id;
+					var course_name = courses[i].name;
+					var course_intro = courses[i].intro;
+					var course_score = courses[i].score;
+					var course_img = courses[i].image;
+					var course_learnCount = courses[i].learnCount;
+					//拼一个课程元素
+					var str = '';
+					str+='<div class="width_220 height172 float_l margin_r20 border_shadow jingguoxianshi over_pos bianshou">';
+					str+='<a href="course.html?id='+course_id+'">';
+					str+='	<div class="width100 float_l img_100 z_inx_1">';
+					str+='		<img src="img/course/'+course_img+'">';
+					str+='	</div>';
+					str+='	<div class="img_backg2 donghua">';
+					str+='		<span class="margin_t15 float_l ">'+course_name+'</span> <span class="float_l fon_siz12 line_hei16 color_gray margin_t5 posi_relative ">'+course_intro+'</span>';
+					str+='	</div>';
+					str+='	<div class="width100 float_l padding_lr20 height48 fon_siz12 line_hei48 z_inx_3 posi_relative backg_white">';
+					str+='		<span class="float_l color_red">评价:'+course_score+'分</span> <span class="float_r color_gray"><span>'+course_learnCount+'</span>人在学</span>';
+					str+='	</div>';
+					str+='</a>';
+					str+='</div>';
+					//添加到免费好课div中
+					$("#freeCourse").append(str);
+				}
+			}
+		}
+	});
+};
+
+</script>
+	
+	
 </html>
