@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/study/study/css/moco.min.css" type="text/css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/study/study/css/muke.css">
-<link rel="Stylesheet" type="text/css" href="${pageContext.request.contextPath}/study/study/css/loginDialog.css" />
-<link rel="Stylesheet" type="text/css" href="${pageContext.request.contextPath}/study/study/css/lv-base.css" />
+<link rel="stylesheet" href="study/css/moco.min.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="study/css/muke.css">
+<link rel="Stylesheet" type="text/css" href="study/css/loginDialog.css" />
+<link rel="Stylesheet" type="text/css" href="study/css/lv-base.css" />
 
 <div id="footer">
 	<div class="waper">
@@ -20,7 +20,7 @@
 				<div class="footer_link">
 					<ul>
 						<li>
-							<a href="${pageContext.request.contextPath}/study/study/index.jsp" target="_blank">网站首页</a>
+							<a href="study/study/index.jsp" target="_blank">网站首页</a>
 						</li>
 						<li>
 							<a href="javascript:void(0)">企业合作</a>

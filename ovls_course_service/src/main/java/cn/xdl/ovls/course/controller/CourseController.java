@@ -26,12 +26,12 @@ public class CourseController {
 		try{
 			List<Course> list = courseService.loadFreeCourse(top);
 			result.setStatus(1);
-			result.setMsg("æŸ¥è¯¢æˆåŠŸ");
+			result.setMsg("²éÑ¯³É¹¦");
 			result.setData(list);
 		}catch(Exception ex){
 			ex.printStackTrace();
 			result.setStatus(0);
-			result.setMsg("æŸ¥è¯¢å¼‚å¸¸");
+			result.setMsg("²éÑ¯Òì³£");
 		}
 		return result;
 	}
@@ -43,16 +43,16 @@ public class CourseController {
 			Course course = courseService.loadCourse(id);
 			if(course==null){
 				result.setStatus(2);
-				result.setMsg("æœªæ‰¾åˆ°è®°å½•");
+				result.setMsg("Î´ÕÒµ½¼ÇÂ¼");
 			}else{
 				result.setStatus(1);
-				result.setMsg("æŸ¥è¯¢æˆåŠŸ");
+				result.setMsg("²éÑ¯³É¹¦");
 				result.setData(course);
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();
 			result.setStatus(0);
-			result.setMsg("æŸ¥è¯¢å¼‚å¸¸");
+			result.setMsg("²éÑ¯Òì³£");
 		}
 		return result;
 	}

@@ -88,7 +88,7 @@ public interface CourseMapper {
     Course selectByPrimaryKey(Integer id);
     
     /**
-     * 鏌ヨ鍏嶈垂濂借淇℃伅
+     * 查询免费好课信息
      * @mbggenerated Tue Mar 27 08:40:00 CST 2018
      */
     @Select({
