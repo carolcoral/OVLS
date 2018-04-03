@@ -1,0 +1,446 @@
+﻿html
+{
+	width:100%;
+	height:100%;
+}
+body 
+{
+	background-color:#fff;
+	font-size:18px;
+	font-family:"Arial","Tahoma","微软雅黑","雅黑";
+	line-height:18px;
+	padding:0px;
+	margin:0px;
+	text-align:center;
+}
+div
+{
+	padding:18px;
+}
+img
+{
+	border:0px;
+	vertical-align:middle;
+	padding:0px;
+	margin:0px;
+}
+input,button
+{
+	font-family:"Arial","Tahoma","微软雅黑","雅黑";
+	border:0px;
+	vertical-align:middle;
+	margin:8px;
+	line-height:18px;	
+	font-size:18px;
+}
+/* download by http://www.websjy.com */
+.pbtn1
+{	
+	border:solid 2px #dcdcdc;
+	padding:4px 14px 4px 34px;
+	color:#959595;
+}
+.btn1
+{
+	background:url("image/button/ok.gif") no-repeat 8px center;
+	background-color:#f9f9f9;
+}
+.btn2
+{
+	background:url("image/button/delete.gif") no-repeat 8px center;
+	background-color:#f9f9f9;
+}
+.btn3
+{
+	background:url("image/button/reset.gif") no-repeat 8px center;
+	background-color:#f9f9f9;
+}
+.btn4
+{
+	width:141px;
+	height:37px;
+	font-size:14px;
+	line-height:14px;
+	background:url("image/button/bg1.jpg") no-repeat left top;
+	color:#959595;
+	padding-bottom:2px;
+}
+.btn5
+{
+	width:145px;
+	height:34px;
+	line-height:22px;
+	font-size:22px;
+	background:url("image/button/bg2.jpg") no-repeat left top;
+	color:#959595;
+	padding-bottom:4px;
+}
+.btn6
+{
+	width:143px;
+	height:35px;
+	line-height:14px;
+	font-size:14px;
+	background:url("image/button/bg3.jpg") no-repeat left top;
+	color:#959595;
+	padding:0px 0px 2px 14px;	
+}
+.pbtn2
+{
+	width:145px;
+	height:37px;
+	background:url("image/button/bg7.jpg") no-repeat left top;
+	text-indent:0px;
+	padding-bottom:4px;
+}
+.btn8
+{
+	background-position:left -37px;
+}
+.btn9
+{
+	background-position:left -74px;
+}
+.btn10
+{
+	width:143px;
+	height:40px;
+	background:url("image/button/bg10.jpg") no-repeat left top;
+	color:#FFF;
+}
+.btn11
+{
+	width:143px;
+	height:40px;
+	background:url("image/button/bg11.jpg") no-repeat left top;
+	color:#FFF;
+}
+.btn12
+{
+	width:143px;
+	height:40px;
+	background:url("image/button/bg12.jpg") no-repeat left top;
+	color:#FFF;
+}
+.pbtn3
+{
+	width:145px;
+	height:40px;
+	background:url("image/button/bg13.jpg") no-repeat left top;
+	text-indent:0px;
+	padding-bottom:4px;
+	color:#FFF;
+}
+.btn14
+{
+	background-position:left -40px;
+}
+.btn15
+{
+	background-position:left -80px;
+}
+.btn16
+{
+	width:145px;
+	height:37px;
+	background:url("image/button/bg16.jpg") no-repeat left top;
+	color:#FFF;
+}
+.btn17
+{
+	width:145px;
+	height:50px;
+	background:url("image/button/bg17.jpg") no-repeat left top;
+	color:#FFF;
+}
+.btn18
+{
+	width:151px;
+	height:43px;
+	background:url("image/button/bg18.jpg") no-repeat left top;
+}
+.btn19
+{
+	width:138px;
+	height:36px;
+	background:url("image/button/bg19.jpg") no-repeat left top;
+}
+.btn20
+{
+	width:145px;
+	height:37px;
+	background:url("image/button/bg20.jpg") no-repeat left top;
+}
+.btn21
+{
+	width:135px;
+	height:40px;
+	background:url("image/button/bg21.jpg") no-repeat left top;
+}
+.btn22
+{
+	width:221px;
+	height:42px;
+	color:#666;
+	background:url("image/button/bg22.jpg") no-repeat left top;
+	padding-left:18px;	
+}
+.btn23
+{
+	width:223px;
+	height:45px;
+	background:url("image/button/bg23.jpg") no-repeat left top;
+	color:#666;
+	padding-left:18px;
+}
+div.d2
+{
+	background-color:#f5f5f5;
+}
+.btn24
+{
+	width:217px;
+	height:50px;
+	line-height:24px;
+	font-size:24px;
+	background:url("image/button/bg24.jpg") no-repeat left top;
+	color:#FFF;
+	padding-left:24px;
+}
+.btn25
+{
+	width:200px;
+	height:49px;
+	line-height:24px;
+	font-size:24px;
+	background:url("image/button/bg25.jpg") no-repeat left top;
+	color:#FFF;
+	padding-left:24px;
+}
+.btn26
+{
+	width:140px;
+	height:36px;
+	line-height:18px;
+	font-size:18px;
+	background:url("image/button/bg26.jpg") no-repeat left top;
+	color:#FFF;
+	padding-bottom:4px;
+}
+.btn27
+{
+	width:144px;
+	height:39px;
+	line-height:18px;
+	font-size:18px;
+	background:url("image/button/bg27.jpg") no-repeat left top;
+	color:#FFF;
+	padding-left:14px;
+}
+.btn28
+{
+	width:145px;
+	height:40px;
+	line-height:18px;
+	font-size:18px;
+	background:url("image/button/bg28.jpg") no-repeat left top;
+	color:#FFF;
+	padding:0px 0px 2px 16px;
+}
+.btn29
+{
+	width:143px;
+	height:43px;
+	line-height:18px;
+	font-size:18px;
+	background:url("image/button/bg29.jpg") no-repeat left top;
+	color:#FFF;
+}
+.btn30
+{
+	width:144px;
+	height:42px;
+	line-height:18px;
+	font-size:18px;
+	color:#ff6000;
+	background:url("image/button/bg30.jpg") no-repeat left top;
+	padding-bottom:4px;
+}
+.btn31
+{
+	width:150px;
+	height:42px;
+	line-height:18px;
+	font-size:18px;
+	color:#fff;
+	padding-left:16px;
+	background:url("image/button/bg31.jpg") no-repeat left top;
+	padding-bottom:4px;
+}
+.btn32
+{
+	width:211px;
+	height:49px;
+	line-height:24px;
+	font-size:24px;
+	color:#999;	
+	background:url("image/button/bg32.jpg") no-repeat left top;
+	padding:0px 22px 2px 0px;
+}
+.btn33
+{
+	width:211px;
+	height:49px;
+	line-height:24px;
+	font-size:24px;
+	color:#767676;	
+	background:url("image/button/bg33.jpg") no-repeat left top;
+	padding:0px 22px 2px 0px;
+}
+.btn34
+{
+	width:139px;
+	height:40px;
+	line-height:18px;
+	font-size:18px;
+	color:#955686;	
+	background:url("image/button/bg34.jpg") no-repeat left top;	
+	padding-bottom:4px;
+}
+.btn35
+{
+	width:142px;
+	height:40px;
+	line-height:18px;
+	font-size:18px;
+	color:#fff;	
+	background:url("image/button/bg35.jpg") no-repeat left top;	
+	padding-bottom:4px;
+}
+.btn36
+{
+	width:151px;
+	height:38px;
+	line-height:18px;
+	font-size:18px;
+	color:#fff;	
+	background:url("image/button/bg36.jpg") no-repeat left top;	
+	padding-bottom:4px;
+}
+div.d3
+{
+	background-color:#000;
+}
+.btn37
+{	
+	color:#FFF;
+	border-top:solid 1px #b766e5;
+	border-left:solid 1px #b766e5;
+	border-bottom:solid 1px #4b1561;
+	border-right:solid 1px #4b1561;
+	background:url("image/button/bg37.jpg") repeat-x left top;	
+}
+.btn38
+{	
+	width:188px;
+	height:74px;
+	color:#FFF;	
+	background:url("image/button/bg38.jpg") no-repeat left top;
+	padding-bottom:2px;
+}
+.btn39
+{
+	height:32px;
+	background:url("image/button/bg39.jpg") repeat-x left top;
+	color:#FFF;
+	padding:0px 20px 0px 20px;
+}
+.btn40
+{
+	width:216px;
+	height:40px;
+	background:url("image/button/bg40.jpg") repeat-x left top;
+	padding-bottom:2px;
+	color:#FFF;
+}
+.btn41
+{
+	width:258px;
+	height:57px;
+	background:url("image/button/bg41.jpg") repeat-x left top;	
+	color:#FFF;
+}
+.btn42
+{
+	width:208px;
+	height:81px;
+	background:url("image/button/bg42.jpg") repeat-x left top;	
+	color:#e9adf3;
+	padding-bottom:36px;
+}
+.btn43
+{
+	width:251px;
+	height:79px;
+	background:url("image/button/bg43.jpg") repeat-x left top;	
+	color:#fffea4;
+	padding-bottom:36px;
+}
+.btn44
+{
+	width:186px;
+	height:73px;
+	background:url("image/button/bg44.jpg") repeat-x left top;	
+	color:#fff;
+	font-size:14px;
+	line-height:14px;
+	padding-top:4px;
+}
+.btn45
+{
+	width:152px;
+	height:75px;
+	background:url("image/button/bg45.jpg") repeat-x left top;	
+	color:#ffafaf;
+	padding-bottom:18px;
+	padding-left:14px;
+}
+.btn46
+{
+	width:155px;
+	height:73px;
+	background:url("image/button/bg46.jpg") repeat-x left top;	
+	color:#666;
+	padding-bottom:18px;
+}
+.btn47
+{
+	width:269px;
+	height:78px;
+	background:url("image/button/bg47.jpg") repeat-x left top;	
+	color:#097b96;
+	padding-bottom:2px;
+}
+/* http://www.websjy.com */
+.btn48
+{
+	width:233px;
+	height:67px;
+	background:url("image/button/bg48.jpg") repeat-x left top;	
+	color:#8bf8ff;
+	padding-bottom:18px;
+}
+.btn49
+{
+	width:244px;
+	height:72px;
+	background:url("image/button/bg49.jpg") repeat-x left top;	
+	color:#fff;	
+}
+.btn50
+{
+	width:226px;
+	height:83px;
+	background:url("image/button/bg50.jpg") repeat-x left top;	
+	color:#fff;	
+}

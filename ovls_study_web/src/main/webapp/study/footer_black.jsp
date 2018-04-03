@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<link rel="stylesheet" href="study/css/moco.min.css" type="text/css" />
-<link rel="stylesheet" type="text/css" href="study/css/muke.css">
-<link rel="Stylesheet" type="text/css" href="study/css/loginDialog.css" />
-<link rel="Stylesheet" type="text/css" href="study/css/lv-base.css" />
+<link rel="stylesheet" href="css/moco.min.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/muke.css">
+<link rel="Stylesheet" type="text/css" href="css/loginDialog.css" />
+<link rel="Stylesheet" type="text/css" href="css/lv-base.css" />
 
 <div id="footer">
 	<div class="waper">

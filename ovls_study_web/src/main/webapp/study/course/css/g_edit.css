@@ -1,0 +1,57 @@
+#center{
+	width: 500px;
+height: 450px;
+border: 5px groove aquamarine;
+	
+}
+/*头部信息样式 */
+#sp1{
+	font-size: 25px;
+	font-weight: bolder;
+}
+
+/*信息头样式*/
+.lab{
+	font-size:20px; 
+	float: left;
+margin-left: 20px;
+}
+
+/*块与块的间距*/
+.formargin{
+	margin-top:20px;
+	
+}
+/*输入框样式*/
+.nickName{
+	width:200px;
+	height:30px;
+	
+}
+
+/*性别样式*/
+.lab_gender{
+	margin-left:50px;
+}
+/*确定按钮*/
+#g_submit{
+	background-color: #0088cc;
+color: #ffffff;
+font-size: 20px;
+padding: 5px;
+	
+}
+#g_cancel{
+	    font-size: 20px;
+    padding: 5px;
+    background-color: #fff;
+    color: #83878c;
+
+}
+
+
+
+
+
+
+

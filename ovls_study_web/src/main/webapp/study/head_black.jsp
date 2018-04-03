@@ -5,9 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="study/css/course_list-v2-less.css" type="text/css" />
-<link rel="stylesheet" type="text/css" href="study/css/muke.css" />
-<link rel="stylesheet" type="text/css" href="study/css/moco.min.css" />
+<link rel="stylesheet" href="css/course_list-v2-less.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/muke.css" />
+<link rel="stylesheet" type="text/css" href="css/moco.min.css" />
 <style>
 	/*登录注册按钮样式*/
 	
@@ -80,7 +80,7 @@
 		<div class="page-container" id="nav">
 			<!-- logo部分 -->
 			<div id="logo" class="logo">
-				<a style="background: url(study/img/logo.png) center center no-repeat"
+				<a style="background: url(img/logo.png) center center no-repeat"
 					href="study/index.jsp" target="_self" class="hide-text" title="首页">兄弟连</a>
 			</div>
 
@@ -121,7 +121,7 @@
 			 
 			<div id="search_top_input" class="float_l top_input">
 				<input class="posi_relative" type="text"  id="search_id" placeholder="请输入..." style="width:250px;"/>
-				<img class="img_sousuo bianshou" src="study/img/uiz4.png" onclick="javascript:window.location='search.jsp'"/>
+				<img class="img_sousuo bianshou" src="img/uiz4.png" onclick="javascript:window.location='search.jsp'"/>
 			</div>
 
 		</div>
@@ -129,8 +129,8 @@
 	</div>
 
 <!-- 这里导入弹出层插件 -->
-<script type="text/javascript" src="study/js/jquery.js"></script>
-<script type="text/javascript" src="study/layer/layer.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="layer/layer.js"></script>
 
 <script type="text/javascript">
 	/*

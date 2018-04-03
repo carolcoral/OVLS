@@ -442,6 +442,7 @@ function loadChapterVideos(id){
 					var chapter_id = chapters[i].id;
 					var chapter_name = chapters[i].name;
 					var videos = chapters[i].videos;
+					
 					//拼一个章节列表元素
 					var str = '';
 					str+='<div class="panel chapter">';

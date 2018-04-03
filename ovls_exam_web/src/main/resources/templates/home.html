@@ -96,11 +96,11 @@
 				<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
 					<ul class="nav navbar-nav">
 						<li class="active">
-							<a href="home.html"><i class="fa fa-home"></i>主页</a>
+							<a href="exam/home.html"><i class="fa fa-home"></i>主页</a>
 						</li>
 						
 						<li>
-							<a href="usercenter.html"><i class="fa fa-dashboard"></i>会员中心</a>
+							<a href="exam/usercenter.html"><i class="fa fa-dashboard"></i>会员中心</a>
 						</li>
 						
 					</ul>
@@ -129,7 +129,7 @@
 										选择试卷考试，成绩计入学员档案，作为毕业成绩
 									</p>
 									<a class="btn btn-primary" data-toggle="modal" data-target=".levelup-practice-modal">
-										<i class="fa fa-arrow-right"></i>参加考试
+									<i class="fa fa-arrow-right"></i>参加考试
 									</a>
 									<div class="modal fade levelup-practice-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 									  <div class="modal-dialog">
@@ -140,9 +140,9 @@
 										     </div>
 										     <div class="modal-body">
 										     	<ul id="papers_1">
-										     		
-												 <!-- 利用ajax加载学科和试卷列表信息 -->		
+										     		<!-- 利用ajax加载学科和试卷列表信息 -->
 
+										     			
 										     	</ul>
 										     </div>
 										     <div class="modal-footer">
@@ -183,7 +183,7 @@
 										     					[共<span class="question-number-3">
 										     						1 
 										     					</span>题]
-							 			     					<a href="practice-improve.html" class="btn btn-success btn-sm join-practice-btn">参加练习</a>
+							 			     					<a href="exam/practice-improve.html" class="btn btn-success btn-sm join-practice-btn">参加练习</a>
 										     			</li>
 										     		</c:forEach>
 										     		
@@ -212,7 +212,7 @@
 
 										根据你对考点的掌握程度智能出题，提升综合能力
 									</p>
-									<a class="btn btn-primary" href="practice-testing.html"><i class="fa fa-arrow-right"></i>参加练习</a>
+									<a class="btn btn-primary" href="exam/practice-testing.html"><i class="fa fa-arrow-right"></i>参加练习</a>
 								</div>
 								<!--//content-->
 
@@ -403,11 +403,10 @@
 			});
 		}
 		</script>
-		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1252987997'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1252987997' type='text/javascript'%3E%3C/script%3E"));</script>
+			<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1252987997'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1252987997' type='text/javascript'%3E%3C/script%3E"));
+		</script>
 	</body>
-	
-	<script type="text/javascript">
-	
+<script type="text/javascript">
 	$(function(){
 		//加载学科和试卷列表
 		loadSubjectPapers();
@@ -415,41 +414,45 @@
 	
 	function loadSubjectPapers(){
 		//加载所有学科
+					
 		$.ajax({
+			
 			url:"http://localhost:8002/subject",
 			type:"get",
 			dataType:"json",
 			success:function(result){
 				if(result.status==1){
-					var subjects = result.data;//获取所有学科
-					for(var i=0;i<subjects.length;i++){
-						var subject_id = subjects[i].id;
-						var subject_name = subjects[i].name;
+					var subject = result.data;//获取所有学科
+					for(var i=0;i<subject.length;i++){
+						var subject_id = subject[i].id;
+						var subject_name = subject[i].name;
 						//拼一个学科元素
 						var str = '';
-						str+='<li>';
-						str+='	<div class="knowledge-title">';
-						str+='		<i class="fa fa-chevron-up"> </i><i class="fa fa-chevron-down" style="display:none;"> </i>  ';
-						str+='		<span class="knowledge-title-name">'+subject_name+'</span>';
-						str+='	</div>';
-						str+='	<ul class="question-list-knowledge" style="display:none;">';
-						//加载学科下的试卷
+						str+=' <li>';
+						str+=' 	<div class="knowledge-title">';
+						str+=' 		<i class="fa fa-chevron-up"> </i><i class="fa fa-chevron-down" style="display:none;"> </i> ';
+						str+=		'<span class="knowledge-title-name">'+subject_name+'</span>';
+						str+=' 	</div>';
+	
+						str+=' 	<ul class="question-list-knowledge" style="display:none;">';
+						//加载学科下的试卷	
 						var papers = loadPapers(subject_id);
-						if(papers==null){//如果没试卷不显示学科
+						if(papers==null){
+							//如果没有试卷不显示学科
 							continue;
 						}
 						for(var j=0;j<papers.length;j++){
-							
 							var paper_id = papers[j].paperId;
-							var paper_name = papers[j].name;
+							var paper_name = papers[j].paperName;
 							var questionTotal = papers[j].questionTotal;
 							var paper_score = papers[j].score;
-							str+='	<li>'+paper_name+' [共<span class="question-number">'+questionTotal+'</span>题]';
-							str+='		[总共<span class="question-number-2">'+paper_score+'</span> 分]';
-							str+='		<a href="practice-testing.html?id='+paper_id+'" class="btn btn-success btn-sm join-practice-btn">进入考场</a>';
-							str+='	</li>';
+						str+=' 			<li>'+paper_name+' [共<span class="question-number">'+questionTotal+'</span>题]';
+						str+=' 				[总共<span class="question-number-2">'+paper_score+'</span> 分]';
+						str+=' 				<a href="practice-testing.html?id='+paper_id+'" class="btn btn-success btn-sm join-practice-btn">进入考场</a>';
+						str+=' 			</li>';
 						}
-						str+='	</ul>';
+						
+						str+=' 	</ul>';
 						str+='</li>';
 						//将学科添加到列表显示区
 						$("#papers_1").append(str);
@@ -460,27 +463,20 @@
 			}
 		});
 	};
-	
-	
 	function loadPapers(subjectId){
-		
-		var papers = null;//1
-		//2
+		var papers = null;
 		$.ajax({
 			url:"http://localhost:8004/paper/subject/"+subjectId,
 			type:"get",
 			dataType:"json",
 			async:false,
-			success:function(result){//3
+			success:function(result){
 				if(result.status==1){
 					papers = result.data;
 				}
 			}
 		});
-		return papers;//4
+		return papers;
 	};
-	
-	</script>
-	
-	
+</script>
 </html>

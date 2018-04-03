@@ -6,11 +6,8 @@
 	<artifactId>ovls_common_service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<!-- <build>
-		<resource>
-			<directory>src/main/webapp/</directory>
-		</resource>
-	</build> -->
+	<!-- <build> <resource> <directory>src/main/webapp/</directory> </resource> 
+		</build> -->
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -127,9 +124,11 @@
 			<artifactId>spring-data-redis</artifactId>
 		</dependency>
 
-		<!-- Thymeleaf -->
-	<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-thymeleaf</artifactId> 
-		</dependency> -->
+		<!-- NekoHTML -->
+		<dependency>
+			<groupId>net.sourceforge.nekohtml</groupId>
+			<artifactId>nekohtml</artifactId>
+		</dependency>
 
 	</dependencies>
 
