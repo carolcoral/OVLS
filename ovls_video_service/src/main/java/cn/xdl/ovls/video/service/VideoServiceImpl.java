@@ -25,4 +25,10 @@ public class VideoServiceImpl implements VideoService {
 		return chapters;
 	}
 
+
+	public Video loadVideo(int videoId) {
+		Video video = videoDao.selectByPrimaryKey(videoId);
+		return video;
+	}
+
 }

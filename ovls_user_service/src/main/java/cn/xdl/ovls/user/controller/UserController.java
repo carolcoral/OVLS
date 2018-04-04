@@ -3,6 +3,7 @@ package cn.xdl.ovls.user.controller;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,19 +25,19 @@ public class UserController {
 			int ret = (Integer)data.get("status");
 			if(ret==1){
 				result.setStatus(1);
-				result.setMsg("ç™»å½•æˆåŠŸ");
+				result.setMsg("µÇÂ¼³É¹¦");
 				result.setData(data);
 			}else if(ret==2){
 				result.setStatus(2);
-				result.setMsg("è´¦å·ä¸å­˜åœ¨");
+				result.setMsg("ÕËºÅ²»´æÔÚ");
 			}else if(ret==3){
 				result.setStatus(3);
-				result.setMsg("å¯†ç é”™è¯¯");
+				result.setMsg("ÃÜÂë´íÎó");
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();
 			result.setStatus(0);
-			result.setMsg("ç™»å½•å¼‚å¸¸");
+			result.setMsg("µÇÂ¼Òì³£");
 		}
 		return result;
 	}
@@ -49,15 +50,35 @@ public class UserController {
 			int ret = userService.addUser(name, password);
 			if(ret==1){
 				result.setStatus(1);
-				result.setMsg("æ³¨å†ŒæˆåŠŸ");
+				result.setMsg("×¢²á³É¹¦");
 			}else if(ret==2){
 				result.setStatus(2);
-				result.setMsg("è´¦å·å·²å­˜åœ¨");
+				result.setMsg("ÕËºÅÒÑ´æÔÚ");
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();
 			result.setStatus(0);
-			result.setMsg("æ³¨å†Œå¼‚å¸¸");
+			result.setMsg("×¢²áÒì³£");
+		}
+		return result;
+	}
+	
+	@RequestMapping(value="/user/token",method=RequestMethod.POST)
+	public OvlsResult checkToken(String userId,String token){
+		OvlsResult result = new OvlsResult();
+		try{
+			boolean ok = userService.checkToken(token, userId);
+			if(ok){
+				result.setStatus(1);
+				result.setMsg("ºÏ·¨ÓÃ»§");
+			}else{
+				result.setStatus(2);
+				result.setMsg("Î´ÊÚÈ¨ÓÃ»§");
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
+			result.setStatus(0);
+			result.setMsg("×¢²áÒì³£");
 		}
 		return result;
 	}

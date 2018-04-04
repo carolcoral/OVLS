@@ -1,5 +1,6 @@
 package cn.xdl.ovls.user.service;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.druid.sql.dialect.oracle.ast.expr.OracleSizeExpr.Unit;
 
@@ -18,6 +20,7 @@ import cn.xdl.ovls.user.entity.User;
 import cn.xdl.ovls.user.util.TokenManager;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService{
 
 	@Autowired
@@ -30,18 +33,18 @@ public class UserServiceImpl implements UserService{
 	private StringRedisTemplate redis;
 	
 	public int addUser(String name, String password) {
-		//æ£€æŸ¥è´¦å·æ˜¯å¦å­˜åœ¨,å­˜åœ¨è¿”å›2
+		//¼ì²éÕËºÅÊÇ·ñ´æÔÚ,´æÔÚ·µ»Ø2
 		User user = userDao.selectByName(name);
 		if(user!=null){
 			return 2;
 		}
-		//ä¸å­˜åœ¨å†è¿›è¡Œæ’å…¥,è¿”å›1
+		//²»´æÔÚÔÙ½øĞĞ²åÈë,·µ»Ø1
 		user = new User();
 		user.setName(name);
-		//TODO å¯†ç åŠ å¯†å¤„ç†
-		//è·å–ç›å€¼
+		//TODO ÃÜÂë¼ÓÃÜ´¦Àí
+		//»ñÈ¡ÑÎÖµ
 		String salt = Md5Utils.randomSalt();
-		//md5(å¯†ç +salt)
+		//md5(ÃÜÂë+salt)
 		String md5Password = Md5Utils.md5(password+salt);
 		user.setPassword(md5Password);
 		user.setSalt(salt);
@@ -52,28 +55,40 @@ public class UserServiceImpl implements UserService{
 
 	public Map<String, Object> checkUser(String name, String password) {
 		Map<String,Object> map = new HashMap<String, Object>();
-		//æ£€æŸ¥è´¦å·æ˜¯å¦æ­£ç¡®
+		//¼ì²éÕËºÅÊÇ·ñÕıÈ·
 		User user = userDao.selectByName(name);
 		if(user != null){
-			//æ£€æŸ¥å¯†ç æ˜¯å¦æ­£ç¡®
+			//¼ì²éÃÜÂëÊÇ·ñÕıÈ·
 			String md5Password = Md5Utils.md5(password+user.getSalt());
 			if(md5Password.equals(user.getPassword())){
-				//ç”Ÿæˆä¸€ä¸ªç™»é™†ä»¤ç‰Œ,ç»™ç”¨æˆ·è¿”å›
+				//Éú³ÉÒ»¸öµÇÂ½ÁîÅÆ,¸øÓÃ»§·µ»Ø
 				String token = tm.createToken(user.getId());
-				//å°†ä»¤ç‰Œåœ¨æœåŠ¡å™¨ç«¯å­˜å‚¨ï¼ˆredisï¼‰,24å°æ—¶å†…æœ‰æ•ˆ
+				//½«ÁîÅÆÔÚ·şÎñÆ÷¶Ë´æ´¢£¨redis£©,24Ğ¡Ê±ÄÚÓĞĞ§
 				redis.opsForValue().set(user.getId().toString(), token);
 				redis.expire(user.getId().toString(), 24, TimeUnit.HOURS);//expire key n
 				map.put("status", 1);
-				map.put("token", token);//ç™»å½•æˆåŠŸ
+				map.put("token", token);//µÇÂ¼³É¹¦
 				map.put("userId", user.getId());
 				return map;
 			}else {
-				map.put("status", 3);//å¯†ç é”™è¯¯
+				map.put("status", 3);//ÃÜÂë´íÎó
 				return map;
 			}
 		}
 		map.put("status", 2);
-		return map;//è´¦å·ä¸å­˜åœ¨
+		return map;//ÕËºÅ²»´æÔÚ
+	}
+
+	public boolean checkToken(String token, String userId) {
+		if(token!=null&&!"".equals(token)
+			&&userId!=null&&!"".equals(userId)){
+			//¼ì²éÕıÈ·ĞÔ
+			String redisToken = redis.opsForValue().get(userId);//´Óredis»ñÈ¡ÁîÅÆ
+			if(redisToken != null && redisToken.equals(token)){//Î´¹ıÆÚ£¬È¡³ötoken£¬±È¶ÔÒ»ÖÂĞÔ
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

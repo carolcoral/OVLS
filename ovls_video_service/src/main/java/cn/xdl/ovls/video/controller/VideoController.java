@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cn.xdl.ovls.common.entity.OvlsResult;
 import cn.xdl.ovls.video.entity.Chapter;
+import cn.xdl.ovls.video.entity.Video;
 import cn.xdl.ovls.video.service.VideoService;
 
 @RestController
@@ -27,6 +28,27 @@ public class VideoController {
 			result.setStatus(1);
 			result.setMsg("查询成功");
 			result.setData(list);
+		}catch(Exception ex){
+			ex.printStackTrace();
+			result.setStatus(0);
+			result.setMsg("查询异常");
+		}
+		return result;
+	}
+	
+	@RequestMapping(value="/video/{id}",method=RequestMethod.GET)
+	public OvlsResult loadVideo(@PathVariable("id")int videoId){
+		OvlsResult result = new OvlsResult();
+		try{
+			Video video = videoService.loadVideo(videoId);
+			if(video==null){
+				result.setStatus(2);
+				result.setMsg("未找到数据");
+			}else{
+				result.setStatus(1);
+				result.setMsg("查询成功");
+				result.setData(video);
+			}
 		}catch(Exception ex){
 			ex.printStackTrace();
 			result.setStatus(0);

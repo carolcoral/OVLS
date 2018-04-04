@@ -6,9 +6,6 @@
 	<artifactId>ovls_common_service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<!-- <build> <resource> <directory>src/main/webapp/</directory> </resource> 
-		</build> -->
-
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -124,14 +121,20 @@
 			<artifactId>spring-data-redis</artifactId>
 		</dependency>
 
+		<!-- jedis -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<!-- <version>2.7.3</version> -->
+		</dependency>
+
 		<!-- NekoHTML -->
 		<dependency>
 			<groupId>net.sourceforge.nekohtml</groupId>
 			<artifactId>nekohtml</artifactId>
 		</dependency>
 
+
 	</dependencies>
-
-
 
 </project>

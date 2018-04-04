@@ -38,8 +38,20 @@ public class TestUserController {
 		MockMvc mock = 
 			MockMvcBuilders.standaloneSetup(userController).build();
 		RequestBuilder request = MockMvcRequestBuilders.post("/user/login")
-			.param("name", "java161")
-			.param("password", "12345");
+			.param("name", "java16")
+			.param("password", "123456");
+		MvcResult result = mock.perform(request).andReturn();
+		String content = result.getResponse().getContentAsString();
+		System.out.println(content);
+	}
+	
+	@Test
+	public void test3() throws Exception{
+		MockMvc mock = 
+			MockMvcBuilders.standaloneSetup(userController).build();
+		RequestBuilder request = MockMvcRequestBuilders.post("/user/token")
+			.param("userId", "2")
+			.param("token", "00aaecea-2bb5-4a7d-a931-61ff0696c097-1522805464131-28");
 		MvcResult result = mock.perform(request).andReturn();
 		String content = result.getResponse().getContentAsString();
 		System.out.println(content);

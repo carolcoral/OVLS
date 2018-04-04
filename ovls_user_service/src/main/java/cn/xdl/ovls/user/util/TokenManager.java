@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class TokenManager {
 	
 	public String createToken(int userId){
-		//ä½¿ç”¨UUIDç”Ÿæˆä¸€ä¸ªç¼–å·
+		//Ê¹ÓÃUUIDÉú³ÉÒ»¸ö±àºÅ
 		UUID uuid = UUID.randomUUID();
 		long createTime = System.currentTimeMillis();
 		return uuid+"-"+createTime+"-"+userId;

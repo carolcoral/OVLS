@@ -4,18 +4,20 @@ import java.util.Map;
 
 public interface UserService {
 	/**
-	 * ç”¨æˆ·æ³¨å†Œ
-	 * @param name è´¦å·
-	 * @param password å¯†ç 
-	 * @return 1:è¡¨ç¤ºæˆåŠŸ;2:è¡¨ç¤ºè´¦å·å·²å­˜åœ¨
+	 * ÓÃ»§×¢²á
+	 * @param name ÕËºÅ
+	 * @param password ÃÜÂë
+	 * @return 1:±íÊ¾³É¹¦;2:±íÊ¾ÕËºÅÒÑ´æÔÚ
 	 */
 	public int addUser(String name,String password);
 	
 	/**
-	 * ç™»å½•ç™»å½•
-	 * @param name è´¦å·
-	 * @param password å¯†ç 
-	 * @return 1:ç™»å½•æˆåŠŸ,token;2:è´¦å·ä¸å­˜åœ¨;3:å¯†ç é”™è¯¯
+	 * µÇÂ¼µÇÂ¼
+	 * @param name ÕËºÅ
+	 * @param password ÃÜÂë
+	 * @return 1:µÇÂ¼³É¹¦,token;2:ÕËºÅ²»´æÔÚ;3:ÃÜÂë´íÎó
 	 */
 	public Map<String, Object> checkUser(String name,String password);
+	
+	public boolean checkToken(String token,String userId);
 }

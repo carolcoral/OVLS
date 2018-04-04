@@ -20,5 +20,10 @@ public class StudyController {
 	public String toCourse() {
 		return "course";// course.jsp-->viewresolver
 	}
+	
+	@RequestMapping("/study/user_center.html")
+	public String toUserCenter() {
+		return "user_center";// course.jsp-->viewresolver
+	}
 
 }
